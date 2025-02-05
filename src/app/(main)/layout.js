@@ -1,19 +1,10 @@
-'use client'
+import ClientLayout from "@/components/main/ClientLayout";
 
-import { Layout } from 'antd';
-import Header from "@/components/main/Header";
+export const metadata = { 
+    title: "Next Js + App Router",
+    description: 'An App configured with Next.js, Antd, JavaScript.'
+};
 
-export default function RootLayout({ children }) {
-
-    const { Content, Footer } = Layout;
-
-    return (
-        <Layout className="layout">
-            <Header />
-            <Content style={{ padding: 24, minHeight: 280, margin: '24px 16px' }}>
-                {children}
-            </Content>
-            <Footer style={{ textAlign: 'center' }}>Next Js Project using Ant</Footer>
-        </Layout>
-    );
-}
+export default function Layout({ children }) {
+    return (<ClientLayout> {children} </ClientLayout>);
+};

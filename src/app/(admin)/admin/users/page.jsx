@@ -1,15 +1,25 @@
-"use client";
 
-import Head from 'next/head';
+import ApiInstance from "@/helpers/Api.helper";
+import UserList from "@/components/admin/Users/Index";
 
-const page = () => {
+export const metadata = {
+    title: 'Admin Dashboard - Users',
+    description: 'A user admin dashboard configured with Next.js, Antd, JavaScript, and Prettier.'
+};
+
+function fetchUsers() {
+    return ApiInstance.get('/users').then(({ data }) => data).catch((error) => {
+        throw new Error(error.message || "Failed to fetch users");
+    });
+};
+
+const page = async () => {
+
+    const users = await fetchUsers();
 
     return (
         <>
-            <Head>
-                <title>Client-Side Page</title>
-            </Head>
-            <p>Admin Users List Will Display Here !!</p>
+            <UserList initialUsers={users} />
         </>
     );
 };
