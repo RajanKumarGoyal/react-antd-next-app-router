@@ -4,9 +4,18 @@ import Cookies from "js-cookie";
 const instance = axios.create({
     baseURL: "https://jsonplaceholder.typicode.com",
     timeout: 10000,
+    headers: {
+        'Content-Type': 'application/json',
+    },
 });
 
 instance.interceptors.request.use((request) => {
+
+    // Cookies.set("accessToken", response.data.token, {
+    //     expires: 7, // Expires in 7 days
+    //     secure: process.env.NODE_ENV === "production",
+    //     sameSite: "Strict",
+    // });
 
     // if (typeof window !== "undefined") {
     //     const token = Cookies.get("accessToken");
